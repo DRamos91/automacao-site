@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class OpenSite {
@@ -17,13 +18,14 @@ public class OpenSite {
 		// Informando ao sistema o local do driver do google chrome
 		System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
+		
 
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		// Comando para fechar o navegador
-		// driver.quit();
+	//	 driver.quit();
 	}
 
 	@Test
@@ -31,12 +33,17 @@ public class OpenSite {
 		// Comando para acessar o site desejado
 		driver.get("https://www.americanas.com.br/");
 
-		driver.findElement(By.xpath("//*[@id=\"rsyswpsdk\"]/div/header/div[1]/div[1]/div/div[1]/form/input")).click();
-		driver.findElement(By.xpath("//*[@id=\"rsyswpsdk\"]/div/header/div[1]/div[1]/div/div[1]/form/input"))
-				.sendKeys("WebCam", Keys.ENTER);
-		// driver.findElement(By.xpath("//*[@id=\"sort-by\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"sort-by\"]/option[1]")).click();
+		WebElement campoPesquisado = driver.findElement(By.name("conteudo"));
+		campoPesquisado.clear();
+		campoPesquisado.sendKeys("Webcam", Keys.ENTER);
 		
+		String preco = driver.findElement(By.xpath("//*[@id=\"rsyswpsdk\"]")).getText();
+
+		System.out.println(preco.toLowerCase().contains("webcam".toLowerCase()));
+
+		System.out.println("O titulo da pagina é: " + driver.getTitle());
+
+
 	}
 
 }

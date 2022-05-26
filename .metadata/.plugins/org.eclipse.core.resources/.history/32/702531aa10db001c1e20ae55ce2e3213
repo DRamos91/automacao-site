@@ -1,0 +1,24 @@
+package opensite;
+
+import java.io.IOException;
+
+import org.jsoup.*;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+public class Testes {
+
+	public static void main(String[] args) {
+		try {
+			Document doc = Jsoup.connect("https://www.americanas.com.br/").get();
+			Element preco = doc.getElementById("rsyswpsdk")
+					.getElementsByTag("src").first().getElementsByTag("header").first();
+			System.out.println("primeiro teste: " + preco.text());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

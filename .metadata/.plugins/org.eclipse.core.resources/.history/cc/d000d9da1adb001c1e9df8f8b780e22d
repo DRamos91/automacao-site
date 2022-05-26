@@ -1,0 +1,21 @@
+package opensite;
+
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class Testes {
+
+	public static void main(String[] args) {
+		try {
+			Document doc = Jsoup.connect("https://9gag.com/").get();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

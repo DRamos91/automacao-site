@@ -1,0 +1,24 @@
+package opensite;
+
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.openqa.selenium.By.ByTagName;
+
+public class Testes {
+
+	public static void main(String[] args) {
+		try {
+			Document doc = Jsoup.connect("https://9gag.com/").get();
+			Element teste = doc.getElementById("list-view-2").getElementsByTag("article").first();
+			System.out.println("primeiro teste: " + teste.text());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
